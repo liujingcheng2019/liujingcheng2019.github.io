@@ -1,17 +1,29 @@
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>一个蒟蒻的万千思绪</title>
+<title>考古专用文 | 一个蒟蒻的万千思绪</title>
 <link rel="shortcut icon" href="https://liujingcheng2019.github.io/favicon.ico?v=1597221217934">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://liujingcheng2019.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="一个蒟蒻的万千思绪 - Atom Feed" href="https://liujingcheng2019.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="考古专用文 | 一个蒟蒻的万千思绪 - Atom Feed" href="https://liujingcheng2019.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-  <meta name="description" content="临渊慕鱼，不如退而结网。" />
+    <meta name="description" content="泥萌找到洛阳铲了吗
+这是本站的第一篇文章呢🎉🎉🎉
+热爱考古的你，是否发现了这篇伟大的文章？
+找找文中彩蛋
+
+恭喜获得成就：考古萌新！
+获得：洛阳铲碎片(2/10)，洛阳刷碎片(1/20)
+好好考古，继续努力！
+
+..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
     <div class="main">
@@ -74,10 +86,44 @@
   </div>
 </div>
 
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              考古专用文
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-08-12
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><s>泥萌找到洛阳铲了吗</s><br>
+这是本站的第一篇文章呢🎉🎉🎉<br>
+热爱考古的你，是否发现了这篇<s>伟大的</s>文章？<br>
+找找文中彩蛋<br>
+<font color="white"><br>
+恭喜获得成就：考古萌新！<br>
+获得：洛阳铲碎片(2/10)，洛阳刷碎片(1/20)<br>
+好好考古，继续努力！<br>
+</font></p>
 
-        <div class="tags-container">
-          
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
         </div>
+
+        
+
+        
 
         <div class="site-footer">
   <div class="dandelion">  
@@ -171,5 +217,46 @@ document.addEventListener('visibilitychange', function(){
 
       </div>
     </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
   </body>
 </html>
