@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liujingcheng2019.github.io</id>
     <title>一个蒟蒻的万千思绪</title>
-    <updated>2020-08-12T08:34:29.939Z</updated>
+    <updated>2020-08-13T03:05:11.437Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liujingcheng2019.github.io"/>
     <link rel="self" href="https://liujingcheng2019.github.io/atom.xml"/>
@@ -10,6 +10,87 @@
     <logo>https://liujingcheng2019.github.io/images/avatar.png</logo>
     <icon>https://liujingcheng2019.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 一个蒟蒻的万千思绪</rights>
+    <entry>
+        <title type="html"><![CDATA[四大最短路算法（1）：Floyd]]></title>
+        <id>https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-1floyd/</id>
+        <link href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-1floyd/">
+        </link>
+        <updated>2020-08-13T02:01:44.000Z</updated>
+        <content type="html"><![CDATA[<p><s>大家都会图吧</s></p>
+<h2 id="最短路">最短路</h2>
+<p>从一个点到另一个点的所有路径中，边权之和（乘积也行）最短的一条路径，叫作最短路</p>
+<h2 id="最slow的floyd">最slow的Floyd</h2>
+<p>这是一个可以求任意一个点到另一个点的最短路径的算法（即多源最短路径）<br>
+他可以处理带负边权的图的最短路径<br>
+还可以检测负环！</p>
+<h2 id="思路">思路</h2>
+<p>怎么求两点（i和j）的最短路嫩？<br>
+<s>弗洛伊德：“找中转点！找中转点！”</s><br>
+如果它们之间有直连边，那距离自然好算，设为边权就好了。<br>
+那如果没有呢？<s>没有就没有。</s><br>
+但如果这条路径上有一个点已经求出了与i和j的最短距离，加起来岂不美哉？<br>
+没错，就是这样。这个点就是<s>弗洛伊德所说的</s>中转点<br>
+我们可以设置一个距离数组dis[i][j]，标记i到j的最短距离。<br>
+<img src="https://liujingcheng2019.github.io/post-images/1597287806706.png" alt="" loading="lazy"></p>
+<h3 id="初始化">初始化</h3>
+<p>如果i和j之间存在直连边，直接赋值为边权；<br>
+如果没有，赋值为INF（一般为0x3f3f3f3f）</p>
+<h3 id="计算">计算</h3>
+<p>枚举i，j和中转点k<br>
+如果i到k的最短距离加上k到j的最短距离比i到j之间<strong>现有</strong>的最短距离要小，更新dis[i][j]<br>
+最后dis[i][j]就一定是最短的<br>
+其实这是一个线性dp的过程</p>
+<h2 id="实现">实现</h2>
+<p>一定有人会兴奋地写下伪代码：</p>
+<pre><code class="language-cpp">  枚举起点i
+    枚举终点j
+        枚举中转点k
+            如果dis[i][k]+dis[k][j]&lt;dis[i][j]:
+                dis[i][j]=dis[i][k]+dis[k][j]
+</code></pre>
+<p>试一试，结果错了<s>我的天讲了这么多都是错的</s><br>
+为什么？因为算dis[i][j]的时候，dis[i][k]和dis[k][j]都还不是最短的，那算出来的dis[i][j]的值必然也是错误的<br>
+附一个图：<br>
+<img src="https://liujingcheng2019.github.io/post-images/1597286238790.png" alt="" loading="lazy"><br>
+如果如上的伪代码先枚举起点和终点，枚举起点为1，终点为2时：<br>
+k=3时，点1到点3的距离为10，点3到点2的距离为∞（因为他们之间没有直连边），更新不了；<br>
+k=4时，点1到点4的距离为∞，点4到点2的距离为无穷大，更新不了；<br>
+以此类推，<s>就一个点了还推啥推</s>，最终算出点1到点2的最短距离为∞<br>
+所以我们亲爱的伪Floyd说：“点1到不了点2，除非你坐火箭。”<br>
+但这明显是错误的呀，1-3-4-5-2，距离为100，是可以到达的。<br>
+那怎么改嫩？很简单，枚举中转点的循环提前即可。<br>
+自己动手试一试，是不是正确的鸭？<br>
+正宗的Floyd：</p>
+<pre><code class="language-cpp">枚举中转点k
+  枚举起点i
+    枚举终点j
+      如果dis[i][k]+dis[k][j]&lt;dis[i][j]:
+          dis[i][j]=dis[i][k]+dis[k][j]
+</code></pre>
+<p>算一下时间复杂度，3层循环1-n，总的时间复杂度就是$$ O(N^3) $$<br>
+是不是很慢？n=1000就挂了。<br>
+所以平常的竞赛中很少使用弗洛伊德，除非数据量极小。<s>那为什么要讲这么多</s></p>
+<h2 id="负环和他的检测">负环和他的检测</h2>
+<p>前面我们提到过负环<s>自己度娘去吧</s><br>
+负环就是一条路径的边权和为负数的路径<br>
+为什么不能算负环的最短路？看图：<br>
+<img src="https://liujingcheng2019.github.io/post-images/1597287101836.png" alt="" loading="lazy"><br>
+之前忘说了，那个标在点里面的是点的编号，在边附近的是边权。<br>
+边权和是不是负数？如果是，请在评论区打1，如果不是，请打sin 64与y轴的交点的坐标。<br>
+所有的最短路算法都会在里面绕圈圈，因为每绕一圈，最短路都会被更新一次。<br>
+但有的可以检测出是否有负环，比如Floyd<br>
+其实很简单，加个判断即可</p>
+<pre><code class="language-cpp">枚举中转点k
+  枚举起点i
+    枚举终点j
+      如果dis[i][k]+dis[k][j]&lt;dis[i][j]:
+          dis[i][j]=dis[i][k]+dis[k][j]
+      如果dis[i][j]&lt;0
+          愤怒地扔出一句骂人的&quot;no&quot;并粗暴地停止运行。
+</code></pre>
+<p>呼。。。第一篇有干货的博客写完了。。。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[考古专用文]]></title>
         <id>https://liujingcheng2019.github.io/post/kao-gu-zhuan-yong-wen/</id>
