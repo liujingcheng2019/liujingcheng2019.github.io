@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>四大最短路算法（2）：Dijkstra的读音 | 一个蒟蒻的万千思绪</title>
-<link rel="shortcut icon" href="https://liujingcheng2019.github.io/favicon.ico?v=1597823564930">
+<link rel="shortcut icon" href="https://liujingcheng2019.github.io/favicon.ico?v=1597827871112">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://liujingcheng2019.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="四大最短路算法（2）：Dijkstra的读音 | 一个蒟蒻的万千思绪 - Atom Feed" href="https://liujingcheng2019.github.io/atom.xml">
@@ -12,10 +12,13 @@
 
 
     <meta name="description" content="大家好啊我回来了
-隔了这么多天才发第二篇好像有点说不过去
+隔了这么多天才发第二篇好像有点说不过去啊
 好，接下来进入正题！
-这个词怎么读呢？不会读的不用敲，会读的请在评论栏里敲1。
-看不到评论栏吗？嗯。。。因为这是一个只有聪明人才能看见的评论栏。。。我是不会告诉你是我自己不会配置的！..." />
+单词的读法
+原来这就是正题
+这个词不是英文单词哈，小伙伴们不要瞎猜了
+据我调查，大部分的人读“迪杰斯特拉”，还有人读“迪杰K斯爪”，或者干脆就是“Dij”。
+..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -25,7 +28,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://liujingcheng2019.github.io">
-  <img class="avatar" src="https://liujingcheng2019.github.io/images/avatar.png?v=1597823564930" alt="">
+  <img class="avatar" src="https://liujingcheng2019.github.io/images/avatar.png?v=1597827871112" alt="">
   </a>
   <h1 class="site-title">
     一个蒟蒻的万千思绪
@@ -91,24 +94,58 @@
                 2020-08-19
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p><img src="aru%5C1.png" alt="" loading="lazy">大家好啊我回来了<br>
-隔了这么多天才发第二篇好像有点说不过去<img src="aru%5C89.png" alt="" loading="lazy"><br>
-好，接下来进入正题！<br>
-这个词怎么读呢？<img src="aru%5C2.png" alt="" loading="lazy">不会读的不用敲，会读的请在评论栏里敲1。<br>
-看不到评论栏吗？嗯。。。因为这是一个只有聪明人才能看见的评论栏。。。<img src="aru%5C22.png" alt="" loading="lazy"><font color="white">我是不会告诉你是我自己不会配置的！</font><br>
-看来大家都不会读啊，评论栏里一点动静都没有。<img src="aru%5C2.png" alt="" loading="lazy"><br>
-（以下音频摘自某大型读音网站）</p>
+                <p>大家好啊我回来了<br>
+隔了这么多天才发第二篇好像有点说不过去啊<br>
+好，接下来进入正题！</p>
+<h2 id="单词的读法">单词的读法</h2>
+<p><s>原来这就是正题</s><br>
+这个词不是英文单词哈，小伙伴们不要瞎猜了<br>
+据我调查，大部分的人读“迪杰斯特拉”，还有人读“迪杰K斯爪”，或者干脆就是“Dij”。<br>
+想要正统的发音吗？<s>请出门左拐到百度广场</s><br>
+男音：<a href="https://pan.baidu.com/s/1ILY0rEbO4RlwfWdCkU-sKw">百度网盘</a> 提取码: 2hz9<br>
+女音：<a href="https://pan.baidu.com/s/1GWPV0db2CdyR6hikG39eSg">百度网盘</a> 提取码: f7pi<br>
+其实这是个人名，有兴趣的话可以找度娘。听说这人还挺厉害的。</p>
+<h2 id="算法概述">算法概述</h2>
+<p>这是单源最短路径，只能求出某一个点到其他点的最短路。不像弗洛伊德，可以求出任意两点之间的最短路。<br>
+他还不能算带有负权边的图的最短路（是不是觉得他很菜）<br>
+尽管如此，在一般比赛中，最常用的最短路算法还是Dijkstra</p>
+<h2 id="算法思路">算法思路</h2>
+<p>让我们先了解一个引理：<br>
+已知点i到点j的最短路径，那么这条最短路径上的一个点k到点i的距离也是最短的<br>
+吗？</p>
+<blockquote>
+<p>引理的正确性证明：<br>
+<img src="https://liujingcheng2019.github.io/post-images/1597826791071.png" alt="" loading="lazy"><br>
+我们可以使用<s>小学二年级的知识</s>反证法来解决这个问题<br>
+前面说过我们已经知道了i到j的最短距离（即图中黑线）<br>
+先假设从i点到k点的路径不是最短的，可以找到另外一条比当前路径更短的路径（即图中红线）<br>
+诶。。。那我们是不是可以把红线下面的那条黑色虚线给替换掉呢？既然红线比黑线短，那替换掉之后不就是更短的吗？<br>
+可是前面说了黑线就是点i到点j的最短距离，没有更短的了。<br>
+所以红线不存在，黑色虚线就是点i到点k的最短路径啦！<br>
+那么，如果要从点i到点j的最短路径，就必须要先求出点i到点k的最短路径<br>
+（其实上述就是对这个贪心过程的证明，因此Dijkstra是贪心算法。有一年NOIP笔试考过这个。）</p>
+</blockquote>
+<p>懂了吗？我们继续吧。</p>
 
               </div>
               <div class="toc-container">
-                
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%8D%95%E8%AF%8D%E7%9A%84%E8%AF%BB%E6%B3%95">单词的读法</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0">算法概述</a></li>
+<li><a href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF">算法思路</a></li>
+</ul>
+</li>
+</ul>
+
               </div>
             </div>
           </article>

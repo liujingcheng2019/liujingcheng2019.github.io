@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liujingcheng2019.github.io</id>
     <title>一个蒟蒻的万千思绪</title>
-    <updated>2020-08-19T07:52:49.224Z</updated>
+    <updated>2020-08-19T09:06:10.136Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liujingcheng2019.github.io"/>
     <link rel="self" href="https://liujingcheng2019.github.io/atom.xml"/>
@@ -11,190 +11,43 @@
     <icon>https://liujingcheng2019.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 一个蒟蒻的万千思绪</rights>
     <entry>
-        <title type="html"><![CDATA[表情测试]]></title>
-        <id>https://liujingcheng2019.github.io/post/biao-qing-ce-shi/</id>
-        <link href="https://liujingcheng2019.github.io/post/biao-qing-ce-shi/">
-        </link>
-        <updated>2020-08-19T07:50:34.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="aru%5C1.png" alt="test" loading="lazy"><br>
-<img src="aru%5C2.png" alt="test" loading="lazy"><br>
-<img src="aru%5C3.png" alt="test" loading="lazy"><br>
-<img src="aru%5C4.png" alt="test" loading="lazy"><br>
-<img src="aru%5C5.png" alt="test" loading="lazy"><br>
-<img src="aru%5C6.png" alt="test" loading="lazy"><br>
-<img src="aru%5C7.png" alt="test" loading="lazy"><br>
-<img src="aru%5C8.png" alt="test" loading="lazy"><br>
-<img src="aru%5C9.png" alt="test" loading="lazy"><br>
-<img src="aru%5C10.png" alt="test" loading="lazy"><br>
-<img src="aru%5C11.png" alt="test" loading="lazy"><br>
-<img src="aru%5C12.png" alt="test" loading="lazy"><br>
-<img src="aru%5C13.png" alt="test" loading="lazy"><br>
-<img src="aru%5C14.png" alt="test" loading="lazy"><br>
-<img src="aru%5C15.png" alt="test" loading="lazy"><br>
-<img src="aru%5C16.png" alt="test" loading="lazy"><br>
-<img src="aru%5C17.png" alt="test" loading="lazy"><br>
-<img src="aru%5C18.png" alt="test" loading="lazy"><br>
-<img src="aru%5C19.png" alt="test" loading="lazy"><br>
-<img src="aru%5C20.png" alt="test" loading="lazy"><br>
-<img src="aru%5C21.png" alt="test" loading="lazy"><br>
-<img src="aru%5C22.png" alt="test" loading="lazy"><br>
-<img src="aru%5C23.png" alt="test" loading="lazy"><br>
-<img src="aru%5C24.png" alt="test" loading="lazy"><br>
-<img src="aru%5C25.png" alt="test" loading="lazy"><br>
-<img src="aru%5C26.png" alt="test" loading="lazy"><br>
-<img src="aru%5C27.png" alt="test" loading="lazy"><br>
-<img src="aru%5C28.png" alt="test" loading="lazy"><br>
-<img src="aru%5C29.png" alt="test" loading="lazy"><br>
-<img src="aru%5C30.png" alt="test" loading="lazy"><br>
-<img src="aru%5C31.png" alt="test" loading="lazy"><br>
-<img src="aru%5C32.png" alt="test" loading="lazy"><br>
-<img src="aru%5C33.png" alt="test" loading="lazy"><br>
-<img src="aru%5C34.png" alt="test" loading="lazy"><br>
-<img src="aru%5C35.png" alt="test" loading="lazy"><br>
-<img src="aru%5C36.png" alt="test" loading="lazy"><br>
-<img src="aru%5C37.png" alt="test" loading="lazy"><br>
-<img src="aru%5C38.png" alt="test" loading="lazy"><br>
-<img src="aru%5C39.png" alt="test" loading="lazy"><br>
-<img src="aru%5C40.png" alt="test" loading="lazy"><br>
-<img src="aru%5C41.png" alt="test" loading="lazy"><br>
-<img src="aru%5C42.png" alt="test" loading="lazy"><br>
-<img src="aru%5C43.png" alt="test" loading="lazy"><br>
-<img src="aru%5C44.png" alt="test" loading="lazy"><br>
-<img src="aru%5C45.png" alt="test" loading="lazy"><br>
-<img src="aru%5C46.png" alt="test" loading="lazy"><br>
-<img src="aru%5C47.png" alt="test" loading="lazy"><br>
-<img src="aru%5C48.png" alt="test" loading="lazy"><br>
-<img src="aru%5C49.png" alt="test" loading="lazy"><br>
-<img src="aru%5C50.png" alt="test" loading="lazy"><br>
-<img src="aru%5C51.png" alt="test" loading="lazy"><br>
-<img src="aru%5C52.png" alt="test" loading="lazy"><br>
-<img src="aru%5C53.png" alt="test" loading="lazy"><br>
-<img src="aru%5C54.png" alt="test" loading="lazy"><br>
-<img src="aru%5C55.png" alt="test" loading="lazy"><br>
-<img src="aru%5C56.png" alt="test" loading="lazy"><br>
-<img src="aru%5C57.png" alt="test" loading="lazy"><br>
-<img src="aru%5C58.png" alt="test" loading="lazy"><br>
-<img src="aru%5C59.png" alt="test" loading="lazy"><br>
-<img src="aru%5C60.png" alt="test" loading="lazy"><br>
-<img src="aru%5C61.png" alt="test" loading="lazy"><br>
-<img src="aru%5C62.png" alt="test" loading="lazy"><br>
-<img src="aru%5C63.png" alt="test" loading="lazy"><br>
-<img src="aru%5C64.png" alt="test" loading="lazy"><br>
-<img src="aru%5C65.png" alt="test" loading="lazy"><br>
-<img src="aru%5C66.png" alt="test" loading="lazy"><br>
-<img src="aru%5C67.png" alt="test" loading="lazy"><br>
-<img src="aru%5C68.png" alt="test" loading="lazy"><br>
-<img src="aru%5C69.png" alt="test" loading="lazy"><br>
-<img src="aru%5C70.png" alt="test" loading="lazy"><br>
-<img src="aru%5C71.png" alt="test" loading="lazy"><br>
-<img src="aru%5C72.png" alt="test" loading="lazy"><br>
-<img src="aru%5C73.png" alt="test" loading="lazy"><br>
-<img src="aru%5C74.png" alt="test" loading="lazy"><br>
-<img src="aru%5C75.png" alt="test" loading="lazy"><br>
-<img src="aru%5C76.png" alt="test" loading="lazy"><br>
-<img src="aru%5C77.png" alt="test" loading="lazy"><br>
-<img src="aru%5C78.png" alt="test" loading="lazy"><br>
-<img src="aru%5C79.png" alt="test" loading="lazy"><br>
-<img src="aru%5C80.png" alt="test" loading="lazy"><br>
-<img src="aru%5C81.png" alt="test" loading="lazy"><br>
-<img src="aru%5C82.png" alt="test" loading="lazy"><br>
-<img src="aru%5C83.png" alt="test" loading="lazy"><br>
-<img src="aru%5C84.png" alt="test" loading="lazy"><br>
-<img src="aru%5C85.png" alt="test" loading="lazy"><br>
-<img src="aru%5C86.png" alt="test" loading="lazy"><br>
-<img src="aru%5C87.png" alt="test" loading="lazy"><br>
-<img src="aru%5C88.png" alt="test" loading="lazy"><br>
-<img src="aru%5C89.png" alt="test" loading="lazy"><br>
-<img src="aru%5C90.png" alt="test" loading="lazy"><br>
-<img src="aru%5C91.png" alt="test" loading="lazy"><br>
-<img src="aru%5C92.png" alt="test" loading="lazy"><br>
-<img src="aru%5C93.png" alt="test" loading="lazy"><br>
-<img src="aru%5C94.png" alt="test" loading="lazy"><br>
-<img src="aru%5C95.png" alt="test" loading="lazy"><br>
-<img src="aru%5C96.png" alt="test" loading="lazy"><br>
-<img src="aru%5C97.png" alt="test" loading="lazy"><br>
-<img src="aru%5C98.png" alt="test" loading="lazy"><br>
-<img src="aru%5C99.png" alt="test" loading="lazy"><br>
-<img src="aru%5C100.png" alt="test" loading="lazy"><br>
-<img src="aru%5C101.png" alt="test" loading="lazy"><br>
-<img src="aru%5C102.png" alt="test" loading="lazy"><br>
-<img src="aru%5C103.png" alt="test" loading="lazy"><br>
-<img src="aru%5C104.png" alt="test" loading="lazy"><br>
-<img src="aru%5C105.png" alt="test" loading="lazy"><br>
-<img src="aru%5C106.png" alt="test" loading="lazy"><br>
-<img src="aru%5C107.png" alt="test" loading="lazy"><br>
-<img src="aru%5C108.png" alt="test" loading="lazy"><br>
-<img src="aru%5C109.png" alt="test" loading="lazy"><br>
-<img src="aru%5C110.png" alt="test" loading="lazy"><br>
-<img src="aru%5C111.png" alt="test" loading="lazy"><br>
-<img src="aru%5C112.png" alt="test" loading="lazy"><br>
-<img src="aru%5C113.png" alt="test" loading="lazy"><br>
-<img src="aru%5C114.png" alt="test" loading="lazy"><br>
-<img src="aru%5C115.png" alt="test" loading="lazy"><br>
-<img src="aru%5C116.png" alt="test" loading="lazy"><br>
-<img src="aru%5C117.png" alt="test" loading="lazy"><br>
-<img src="aru%5C118.png" alt="test" loading="lazy"><br>
-<img src="aru%5C119.png" alt="test" loading="lazy"><br>
-<img src="aru%5C120.png" alt="test" loading="lazy"><br>
-<img src="aru%5C121.png" alt="test" loading="lazy"><br>
-<img src="aru%5C122.png" alt="test" loading="lazy"><br>
-<img src="aru%5C123.png" alt="test" loading="lazy"><br>
-<img src="aru%5C124.png" alt="test" loading="lazy"><br>
-<img src="aru%5C125.png" alt="test" loading="lazy"><br>
-<img src="aru%5C126.png" alt="test" loading="lazy"><br>
-<img src="aru%5C127.png" alt="test" loading="lazy"><br>
-<img src="aru%5C128.png" alt="test" loading="lazy"><br>
-<img src="aru%5C129.png" alt="test" loading="lazy"><br>
-<img src="aru%5C130.png" alt="test" loading="lazy"><br>
-<img src="aru%5C131.png" alt="test" loading="lazy"><br>
-<img src="aru%5C132.png" alt="test" loading="lazy"><br>
-<img src="aru%5C133.png" alt="test" loading="lazy"><br>
-<img src="aru%5C134.png" alt="test" loading="lazy"><br>
-<img src="aru%5C135.png" alt="test" loading="lazy"><br>
-<img src="aru%5C136.png" alt="test" loading="lazy"><br>
-<img src="aru%5C137.png" alt="test" loading="lazy"><br>
-<img src="aru%5C138.png" alt="test" loading="lazy"><br>
-<img src="aru%5C139.png" alt="test" loading="lazy"><br>
-<img src="aru%5C140.png" alt="test" loading="lazy"><br>
-<img src="aru%5C141.png" alt="test" loading="lazy"><br>
-<img src="aru%5C142.png" alt="test" loading="lazy"><br>
-<img src="aru%5C143.png" alt="test" loading="lazy"><br>
-<img src="aru%5C144.png" alt="test" loading="lazy"><br>
-<img src="aru%5C145.png" alt="test" loading="lazy"><br>
-<img src="aru%5C146.png" alt="test" loading="lazy"><br>
-<img src="aru%5C147.png" alt="test" loading="lazy"><br>
-<img src="aru%5C148.png" alt="test" loading="lazy"><br>
-<img src="aru%5C149.png" alt="test" loading="lazy"><br>
-<img src="aru%5C150.png" alt="test" loading="lazy"><br>
-<img src="aru%5C151.png" alt="test" loading="lazy"><br>
-<img src="aru%5C152.png" alt="test" loading="lazy"><br>
-<img src="aru%5C153.png" alt="test" loading="lazy"><br>
-<img src="aru%5C154.png" alt="test" loading="lazy"><br>
-<img src="aru%5C155.png" alt="test" loading="lazy"><br>
-<img src="aru%5C156.png" alt="test" loading="lazy"><br>
-<img src="aru%5C157.png" alt="test" loading="lazy"><br>
-<img src="aru%5C158.png" alt="test" loading="lazy"><br>
-<img src="aru%5C159.png" alt="test" loading="lazy"><br>
-<img src="aru%5C160.png" alt="test" loading="lazy"><br>
-<img src="aru%5C161.png" alt="test" loading="lazy"><br>
-<img src="aru%5C162.png" alt="test" loading="lazy"><br>
-<img src="aru%5C163.png" alt="test" loading="lazy"><br>
-<img src="aru%5C164.png" alt="test" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[四大最短路算法（2）：Dijkstra的读音]]></title>
         <id>https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-2dijkstra-de-du-yin/</id>
         <link href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-2dijkstra-de-du-yin/">
         </link>
         <updated>2020-08-19T06:29:09.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="aru%5C1.png" alt="" loading="lazy">大家好啊我回来了<br>
-隔了这么多天才发第二篇好像有点说不过去<img src="aru%5C89.png" alt="" loading="lazy"><br>
-好，接下来进入正题！<br>
-这个词怎么读呢？<img src="aru%5C2.png" alt="" loading="lazy">不会读的不用敲，会读的请在评论栏里敲1。<br>
-看不到评论栏吗？嗯。。。因为这是一个只有聪明人才能看见的评论栏。。。<img src="aru%5C22.png" alt="" loading="lazy"><font color="white">我是不会告诉你是我自己不会配置的！</font><br>
-看来大家都不会读啊，评论栏里一点动静都没有。<img src="aru%5C2.png" alt="" loading="lazy"><br>
-（以下音频摘自某大型读音网站）</p>
+        <content type="html"><![CDATA[<p>大家好啊我回来了<br>
+隔了这么多天才发第二篇好像有点说不过去啊<br>
+好，接下来进入正题！</p>
+<h2 id="单词的读法">单词的读法</h2>
+<p><s>原来这就是正题</s><br>
+这个词不是英文单词哈，小伙伴们不要瞎猜了<br>
+据我调查，大部分的人读“迪杰斯特拉”，还有人读“迪杰K斯爪”，或者干脆就是“Dij”。<br>
+想要正统的发音吗？<s>请出门左拐到百度广场</s><br>
+男音：<a href="https://pan.baidu.com/s/1ILY0rEbO4RlwfWdCkU-sKw">百度网盘</a> 提取码: 2hz9<br>
+女音：<a href="https://pan.baidu.com/s/1GWPV0db2CdyR6hikG39eSg">百度网盘</a> 提取码: f7pi<br>
+其实这是个人名，有兴趣的话可以找度娘。听说这人还挺厉害的。</p>
+<h2 id="算法概述">算法概述</h2>
+<p>这是单源最短路径，只能求出某一个点到其他点的最短路。不像弗洛伊德，可以求出任意两点之间的最短路。<br>
+他还不能算带有负权边的图的最短路（是不是觉得他很菜）<br>
+尽管如此，在一般比赛中，最常用的最短路算法还是Dijkstra</p>
+<h2 id="算法思路">算法思路</h2>
+<p>让我们先了解一个引理：<br>
+已知点i到点j的最短路径，那么这条最短路径上的一个点k到点i的距离也是最短的<br>
+吗？</p>
+<blockquote>
+<p>引理的正确性证明：<br>
+<img src="https://liujingcheng2019.github.io/post-images/1597826791071.png" alt="" loading="lazy"><br>
+我们可以使用<s>小学二年级的知识</s>反证法来解决这个问题<br>
+前面说过我们已经知道了i到j的最短距离（即图中黑线）<br>
+先假设从i点到k点的路径不是最短的，可以找到另外一条比当前路径更短的路径（即图中红线）<br>
+诶。。。那我们是不是可以把红线下面的那条黑色虚线给替换掉呢？既然红线比黑线短，那替换掉之后不就是更短的吗？<br>
+可是前面说了黑线就是点i到点j的最短距离，没有更短的了。<br>
+所以红线不存在，黑色虚线就是点i到点k的最短路径啦！<br>
+那么，如果要从点i到点j的最短路径，就必须要先求出点i到点k的最短路径<br>
+（其实上述就是对这个贪心过程的证明，因此Dijkstra是贪心算法。有一年NOIP笔试考过这个。）</p>
+</blockquote>
+<p>懂了吗？我们继续吧。</p>
 ]]></content>
     </entry>
     <entry>
