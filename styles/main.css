@@ -2178,8 +2178,6 @@ body {
     }.box-scale > #landlord {
       transform: scale([0,1]);
     }.box-shadow-wrapper {
-      padding: 10px;
-    }.box-shadow-wrapper {
       box-shadow: none !important;
     }body {
       cursor: default;
