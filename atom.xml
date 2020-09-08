@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://liujingcheng2019.github.io</id>
     <title>一个蒟蒻的万千思绪</title>
-    <updated>2020-08-24T05:18:58.423Z</updated>
+    <updated>2020-09-08T15:05:02.983Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://liujingcheng2019.github.io"/>
     <link rel="self" href="https://liujingcheng2019.github.io/atom.xml"/>
@@ -10,6 +10,31 @@
     <logo>https://liujingcheng2019.github.io/images/avatar.png</logo>
     <icon>https://liujingcheng2019.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 一个蒟蒻的万千思绪</rights>
+    <entry>
+        <title type="html"><![CDATA[四大最短路算法（三）：Dijkstra的优化]]></title>
+        <id>https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/</id>
+        <link href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/">
+        </link>
+        <updated>2020-09-08T14:30:22.000Z</updated>
+        <content type="html"><![CDATA[<p>如果把Dijkstra算法改成多源的，那时间复杂度就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>（执行n次Dijkstra）<br>
+啊这。。。好像和Floyed一样慢<br>
+所以我们需要优化！</p>
+<h1 id="优化概述">优化概述</h1>
+<h3 id="邻接表">邻接表</h3>
+<p>把邻接矩阵改为邻接表，可以节约一点空间</p>
+<pre><code class="language-cpp">struct edge
+{
+	int to;
+	int w;
+};
+vector&lt;edge&gt; g[101];
+</code></pre>
+<p>g[i]表示与i相连的点,to标记这个点的编号，w表示i与to之间的边权。可以这样认为：edge标记了一条边。</p>
+<h3 id="pair的使用">pair的使用</h3>
+<p>pair定义了一对数</p>
+<pre><code class="language-pair&lt;int,int&gt;"></code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[四大最短路算法（2）：Dijkstra的读音]]></title>
         <id>https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-2dijkstra-de-du-yin/</id>
@@ -108,6 +133,7 @@ int main()
 	for(int i=1;i&lt;=n;++i)cout&lt;&lt;dis[i]&lt;&lt;&quot; &quot;;
 }
 </code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
 <h2 id="负权边">负权边</h2>
 <p>那有小朋友<s>好多小朋友啊</s>可能要问了，诶这个算法看上去完美无缺啊，为什么不能处理负权边？<br>
 还是要用一张图来说明：<br>

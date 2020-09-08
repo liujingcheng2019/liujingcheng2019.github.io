@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="临渊慕鱼，不如退而结网。">
 <meta name="theme-color" content="#845ef7">
-<title>考古专用文 | 一个蒟蒻的万千思绪</title>
+<title>四大最短路算法（三）：Dijkstra的优化 | 一个蒟蒻的万千思绪</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1599576808454">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -38,7 +38,7 @@
 
 
 
-  <meta name="description" content="考古专用文" />
+  <meta name="description" content="四大最短路算法（三）：Dijkstra的优化" />
   <meta name="keywords" content="" />
 </head>
 
@@ -190,7 +190,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -250,6 +251,197 @@
   </div>
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto"
+    id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#%E4%BC%98%E5%8C%96%E6%A6%82%E8%BF%B0">优化概述</a><br>
+*
+<ul>
+<li><a href="#%E9%82%BB%E6%8E%A5%E8%A1%A8">邻接表</a></li>
+<li><a href="#pair%E7%9A%84%E4%BD%BF%E7%94%A8">pair的使用</a></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+  let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1;
+  let active = 'active-show', activeClass = 'active-current';
+  let tocWrapper = document.querySelector('#toc_wrapper');
+  let tocContent = tocWrapper.children[0];
+  let autoNumber = tocWrapper && tocWrapper.classList.contains('auto-number');
+
+  function addTocNumber(elem, deep) {
+    if (!elem) {
+      return;
+    }
+    let prop = elem.__proto__;
+
+    if (prop === HTMLUListElement.prototype) {
+      for (let i = 0; i < elem.children.length; i++) {
+        addTocNumber(elem.children[i], deep + (i + 1) + '.');
+      }
+    } else if (prop === HTMLLIElement.prototype) {
+      // 保存li元素
+      if (elem.children[0] && elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+        lList.push(elem);
+      }
+      for (let i = 0; i < elem.children.length; i++) {
+        let cur = elem.children[i];
+        if (cur.__proto__ === HTMLAnchorElement.prototype) {
+          if (autoNumber) {
+            cur.text = deep + ' ' + cur.text;
+          }
+        } else if (cur.__proto__ === HTMLUListElement.prototype) {
+          addTocNumber(cur, deep);
+        }
+      }
+    }
+  }
+
+  function removeParentActiveClass() {
+    let parents = tocContent.querySelectorAll('.' + active)
+    parents.forEach(function (elem) {
+      elem.classList.remove(active);
+    });
+  }
+
+  function addActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.add(activeClass);
+    }
+  }
+
+  function removeActiveClass(index) {
+    if (index >= 0 && index < hList.length) {
+      lList[index].classList.remove(activeClass);
+    }
+  }
+
+  function addActiveLiElemment(elem, parent) {
+    if (!elem || elem === parent) {
+      return;
+    } else {
+      if (elem.__proto__ === HTMLLIElement.prototype) {
+        elem.classList.add(active);
+      }
+      addActiveLiElemment(elem.parentElement, parent);
+    }
+  }
+
+  function showToc() {
+    if (tocWrapper) {
+      postBody = document.querySelector('#post_body');
+      for (let i = 0; i < postBody.children.length; i++) {
+        if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+          hList.push(postBody.children[i]);
+        }
+      }
+      if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+      } else if (tocWrapper.classList.contains('no_compress')) {
+        tocContent.classList.add('expanded');
+      } else {
+        if (hList.length > 10) {
+          active = 'active-hidden'
+          tocContent.classList.add('closed');
+        } else {
+          tocContent.classList.add('expanded');
+        }
+      }
+    }
+  }
+
+  (function () {
+    // 处理不是从#一级标题开始目录
+    if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+      let con = tocContent.children[0].children[0];
+      tocContent.innerHTML = con.innerHTML;
+    }
+    let markdownItTOC = document.querySelector('.markdownIt-TOC');
+    let innerHeight = window.innerHeight;
+    markdownItTOC.style = `max-height: ${innerHeight - 80 > 0 ? innerHeight - 80 : innerHeight}px`
+    addTocNumber(tocContent, '');
+  })();
+
+  document.addEventListener('scroll', function (e) {
+    if (lList.length <= 0) {
+      return;
+    }
+    let scrollTop = document.scrollingElement.scrollTop + 10;
+    let dir;
+
+    if (lastTop - scrollTop > 0) {
+      dir = 'up';
+    } else {
+      dir = 'down';
+    }
+
+    lastTop = scrollTop;
+    if (scrollTop <= 0) {
+      if (lastIndex >= 0 && lastIndex < hList.length) {
+        lList[lastIndex].classList.remove(activeClass);
+      }
+      return;
+    }
+
+    let current = 0, hasFind = false;
+    for (let i = 0; i < hList.length; i++) {
+      if (hList[i].offsetTop > scrollTop) {
+        current = i;
+        hasFind = true;
+        break;
+      }
+    }
+    if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+      current = hList.length - 1;
+    } else {
+      current--;
+    }
+    if (dir === 'down') {
+      if (current > lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex)
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    } else {
+      if (current < lastIndex) {
+        addActiveClass(current);
+        removeActiveClass(lastIndex);
+        lastIndex = current;
+        removeParentActiveClass();
+        lList[current] && addActiveLiElemment(lList[current].parentElement, tocContent);
+      }
+    }
+  });
+
+
+  window.addEventListener('load', function () {
+    showToc();
+    document.querySelector('#sidebar').style = 'display: block;';
+    tocWrapper.classList.add('toc-active');
+    setTimeout(function () {
+      if ("createEvent" in document) {
+        let evt = document.createEvent("HTMLEvents");
+        evt.initEvent("scroll", false, true);
+        document.dispatchEvent(evt);
+      }
+      else {
+        document.fireEvent("scroll");
+      }
+    }, 500)
+  })
+
+</script>
+            </div>
           
         
       </div>
@@ -337,8 +529,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://liujingcheng2019.github.io/post/kao-gu-zhuan-yong-wen/">
-      考古专用文
+    <a class="post-title-link" href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/">
+      四大最短路算法（三）：Dijkstra的优化
     </a>
   </h1>
   <div class="post-meta">
@@ -346,7 +538,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-08-12 16:27:59">2020-08-12</span>
+      <span class="publish-time" data-t="2020-09-08 22:30:22">2020-09-08</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -357,12 +549,12 @@
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>83<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>136<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/kao-gu-zhuan-yong-wen/" data-flag-title="考古专用文" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/" data-flag-title="四大最短路算法（三）：Dijkstra的优化" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -371,15 +563,23 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <p><s>泥萌找到洛阳铲了吗</s><br>
-这是本站的第一篇文章呢🎉🎉🎉<br>
-热爱考古的你，是否发现了这篇<s>伟大的</s>文章？<br>
-找找文中彩蛋<br>
-<font color="white"><br>
-恭喜获得成就：考古萌新！<br>
-获得：洛阳铲碎片(2/10)，洛阳刷碎片(1/20)，考古锤(10/10)🔨！<br>
-好好考古，继续努力！<br>
-</font></p>
+              <p>如果把Dijkstra算法改成多源的，那时间复杂度就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>3</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>（执行n次Dijkstra）<br>
+啊这。。。好像和Floyed一样慢<br>
+所以我们需要优化！</p>
+<h1 id="优化概述">优化概述</h1>
+<h3 id="邻接表">邻接表</h3>
+<p>把邻接矩阵改为邻接表，可以节约一点空间</p>
+<pre><code class="language-cpp">struct edge
+{
+	int to;
+	int w;
+};
+vector&lt;edge&gt; g[101];
+</code></pre>
+<p>g[i]表示与i相连的点,to标记这个点的编号，w表示i与to之间的边权。可以这样认为：edge标记了一条边。</p>
+<h3 id="pair的使用">pair的使用</h3>
+<p>pair定义了一对数</p>
+<pre><code class="language-pair&lt;int,int&gt;"></code></pre>
 
             </div>
             
@@ -392,7 +592,7 @@
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://liujingcheng2019.github.io/post/kao-gu-zhuan-yong-wen/" title="考古专用文">https://liujingcheng2019.github.io/post/kao-gu-zhuan-yong-wen/</a>
+      <a href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/" title="四大最短路算法（三）：Dijkstra的优化">https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-san-dijkstra-de-you-hua/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -405,12 +605,12 @@
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="四大最短路算法（1）：Floyd" href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-1floyd/">四大最短路算法（1）：Floyd</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="四大最短路算法（1）：Floyd" href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-1floyd/">上一篇</a>
-      
     </div>
     <div class="nav-next">
+      
+        <a class="nav-pc-next" title="四大最短路算法（2）：Dijkstra的读音" href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-2dijkstra-de-du-yin/">四大最短路算法（2）：Dijkstra的读音</a>
+        <a class="nav-mobile-next" title="四大最短路算法（2）：Dijkstra的读音" href="https://liujingcheng2019.github.io/post/si-da-zui-duan-lu-suan-fa-2dijkstra-de-du-yin/">下一篇</a>
+        <i class="fa fa-chevron-right"></i>
       
     </div>
   </div>
